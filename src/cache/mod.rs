@@ -121,20 +121,20 @@ pub struct Cache {
     /// When a [`Event::GuildDelete`] or [`Event::GuildUnavailable`] is
     /// received and processed by the cache, the relevant channels are also
     /// removed from this map.
-    pub(crate) channels: RwLock<HashMap<ChannelId, GuildChannel>>,
+    pub channels: RwLock<HashMap<ChannelId, GuildChannel>>,
     /// A map of channel categories.
-    pub(crate) categories: RwLock<HashMap<ChannelId, ChannelCategory>>,
+    pub categories: RwLock<HashMap<ChannelId, ChannelCategory>>,
     /// A map of guilds with full data available. This includes data like
     /// [`Role`]s and [`Emoji`]s that are not available through the REST API.
-    pub(crate) guilds: RwLock<HashMap<GuildId, Guild>>,
-    pub(crate) messages: RwLock<MessageCache>,
+    pub guilds: RwLock<HashMap<GuildId, Guild>>,
+    pub messages: RwLock<MessageCache>,
     /// A map of users' presences. This is updated in real-time. Note that
     /// status updates are often "eaten" by the gateway, and this should not
     /// be treated as being entirely 100% accurate.
-    pub(crate) presences: RwLock<HashMap<UserId, Presence>>,
+    pub presences: RwLock<HashMap<UserId, Presence>>,
     /// A map of direct message channels that the current user has open with
     /// other users.
-    pub(crate) private_channels: RwLock<HashMap<ChannelId, PrivateChannel>>,
+ private_channels: RwLock<HashMap<ChannelId, PrivateChannel>>,
     /// The total number of shards being used by the bot.
     pub(crate) shard_count: RwLock<u64>,
     /// A list of guilds which are "unavailable". Refer to the documentation for
@@ -143,7 +143,7 @@ pub struct Cache {
     /// Additionally, guilds are always unavailable for bot users when a Ready
     /// is received. Guilds are "sent in" over time through the receiving of
     /// [`Event::GuildCreate`]s.
-    pub(crate) unavailable_guilds: RwLock<HashSet<GuildId>>,
+    pub unavailable_guilds: RwLock<HashSet<GuildId>>,
     /// The current user "logged in" and for which events are being received
     /// for.
     ///
@@ -166,13 +166,13 @@ pub struct Cache {
     /// Note, however, that users are _not_ removed from the map on removal
     /// events such as [`GuildMemberRemove`][`GuildMemberRemoveEvent`], as other
     /// structs such as members or recipients may still exist.
-    pub(crate) users: RwLock<HashMap<UserId, User>>,
+    pub users: RwLock<HashMap<UserId, User>>,
     /// Queue of message IDs for each channel.
     ///
     /// This is simply a vecdeque so we can keep track of the order of messages
     /// inserted into the cache. When a maximum number of messages are in a
     /// channel's cache, we can pop the front and remove that ID from the cache.
-    pub(crate) message_queue: RwLock<HashMap<ChannelId, VecDeque<MessageId>>>,
+    pub message_queue: RwLock<HashMap<ChannelId, VecDeque<MessageId>>>,
     /// The settings for the cache.
     settings: RwLock<Settings>,
 }
