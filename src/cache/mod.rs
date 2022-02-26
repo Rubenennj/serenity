@@ -134,7 +134,7 @@ pub struct Cache {
     pub presences: RwLock<HashMap<UserId, Presence>>,
     /// A map of direct message channels that the current user has open with
     /// other users.
- private_channels: RwLock<HashMap<ChannelId, PrivateChannel>>,
+    pub private_channels: RwLock<HashMap<ChannelId, PrivateChannel>>,
     /// The total number of shards being used by the bot.
     pub(crate) shard_count: RwLock<u64>,
     /// A list of guilds which are "unavailable". Refer to the documentation for
